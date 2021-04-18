@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import List from '../components/List'
 
@@ -24,14 +25,14 @@ export default function Home({bookmarks = []}) {
       </main>
       
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
+        <Link href="/sobre">
+          <a
+            rel="noopener noreferrer"
+          >
+            Sobre
+            <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          </a>
+        </Link>
       </footer>
     </div>
   )
