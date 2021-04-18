@@ -103,7 +103,9 @@ dist
 # TernJS port file
 .tern-port
 
-# http
-*.http
+# vercel
+.vercel
 
+# http
+bookmarks.http
 db.json
