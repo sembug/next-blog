@@ -3,6 +3,19 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import List from '../components/List'
 
+export async function getStaticProps() {
+  const response = await fetch("https://pacific-garden-31351.herokuapp.com/bookmarks")
+  const bookmarks = await response.json()
+  // revalidate é quantidade minima em segundos que eu não quero que esses dados estaticos sejam revalidados
+  // a quantidade minima que eu quero manter esses dados em prod até que chegue um nova consulta depois desse estágio.
+  return {
+      props: {
+        bookmarks,
+      },
+      revalidate: 10,
+  }
+} 
+
 export default function Home({bookmarks = []}) {
   return (
     <div className={styles.container}>
@@ -37,14 +50,3 @@ export default function Home({bookmarks = []}) {
     </div>
   )
 }
-
-export async function getStaticProps() {
-  const response = await fetch("https://pacific-garden-31351.herokuapp.com/bookmarks")
-  const bookmarks = await response.json()
-  return {
-      props: {
-        bookmarks,
-      },
-      revalidate: 10,
-  }
-} 
